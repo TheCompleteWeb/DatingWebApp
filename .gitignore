@@ -2,3 +2,44 @@ bin
 obj
 .vscode
 *.db
+
+DatingApp/DatingApp.SPA/dist
+DatingApp/DatingApp.SPA/dist-server
+DatingApp/DatingApp.SPA/tmp
+DatingApp/DatingApp.SPA/out-tsc
+#dependencies
+DatingApp/DatingApp.SPA/node_modules
+
+# IDEs and editors
+DatingApp/DatingApp.SPA/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+DatingApp/DatingApp.SPA/.sass-cache
+DatingApp/DatingApp.SPA/connect.lock
+DatingApp/DatingApp.SPA/coverage
+DatingApp/DatingApp.SPA/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+DatingApp/DatingApp.SPA/typings
+
+# e2e
+DatingApp/DatingApp.SPA/e2e/*.js
+DatingApp/DatingApp.SPA/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
