@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using DatingApp.API.Data;
 using DatingApp.API.Dtos;
 using DatingApp.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.API.Controllers
@@ -15,11 +17,16 @@ namespace DatingApp.API.Controllers
     public class AuthController : Controller
     {
         private readonly IAuthRepository _repo;
-        public AuthController(IAuthRepository repo)
+
+        private readonly IConfiguration _config;
+
+        public AuthController(IAuthRepository repo, IConfiguration config)
         {
+            _config = config;
             _repo = repo;
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
         {
@@ -43,6 +50,7 @@ namespace DatingApp.API.Controllers
             
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]UserForLoginDto userForLoginDto) 
         {
@@ -52,7 +60,7 @@ namespace DatingApp.API.Controllers
             return Unauthorized();
         
           var tokenHandler = new JwtSecurityTokenHandler();
-          var key = Encoding.ASCII.GetBytes("super secret key");
+          var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value);
 
           var tokenDescriptor = new SecurityTokenDescriptor()
           {
