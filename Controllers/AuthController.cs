@@ -54,6 +54,9 @@ namespace DatingApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]UserForLoginDto userForLoginDto) 
         {
+       
+          throw new Exception(message: "Computer says no!");
+
           var userFromRepo = await _repo.LoginAsync(userForLoginDto.Username.ToLower(), userForLoginDto.Password);  
 
           if(userFromRepo == null)
@@ -78,6 +81,7 @@ namespace DatingApp.API.Controllers
           var tokenString = tokenHandler.WriteToken(token);
 
           return Ok( new {tokenString});
+        
         }
     }
 }
