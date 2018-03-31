@@ -38,9 +38,9 @@ namespace DatingApp.API
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<Seed>();
-            services.AddMvc();
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -53,7 +53,9 @@ namespace DatingApp.API
                     };
 
                 });
-
+            services.AddMvc().AddJsonOptions(opt =>{
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
 
         }
 
