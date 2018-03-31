@@ -12,13 +12,13 @@ namespace DatingApp.API.Migrations
                 name: "Values",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Values", x => x.id);
+                    table.PrimaryKey("PK_Values", x => x.Id);
                 });
         }
 
