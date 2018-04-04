@@ -18,7 +18,7 @@ namespace DatingApp.API.Dtos
 
         public DateTime Created { get; set; }
 
-        public DateTime LastActivate { get; set; }
+        public DateTime LastActive { get; set; }
 
         public string Introduction { get; set; }
 
