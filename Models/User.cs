@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace DatingApp.API.Models
 {
     public class User
     {
-        private ICollection<Photo> _photos;
+        
 
         public int Id { get; set; }
 
@@ -42,6 +43,8 @@ namespace DatingApp.API.Models
         {
             Photos = new Collection<Photo>();
         }
+
+       
     }
 
 
