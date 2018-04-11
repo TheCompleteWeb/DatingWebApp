@@ -100,7 +100,7 @@ namespace DatingApp.API.Controllers
 
             user.Photos.Add(photo);
 
-            var photoToReturn = _mapper.Map<PhotoForCreationDto>(photo);
+            var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
             
             if (await _repo.SaveAll())
             {
