@@ -48,7 +48,7 @@ namespace DatingApp.API.Controllers
 
         public async Task<IActionResult> GetPhoto(int id)
         {
-            var photoFromRepo = _repo.GetPhoto(id);
+            var photoFromRepo = await _repo.GetPhoto(id);
 
             var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
 
@@ -80,7 +80,8 @@ namespace DatingApp.API.Controllers
                 {
                     var uploadParams = new ImageUploadParams()
                     {
-                        File = new FileDescription(file.Name, stream)
+                        File = new FileDescription(file.Name, stream),
+                        Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
                     };
 
                     uploadResult = _cloudinary.Upload(uploadParams);
